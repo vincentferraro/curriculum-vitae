@@ -3,19 +3,15 @@ import * as dotenv from "dotenv";
 dotenv.config();
 
 const privateKey: string = process.env.PRIVATE_KEY_TOKEN as string;
-console.log("PRIVATEKEY", privateKey);
-interface jsonObject {
-  name: string;
-  lastname: string;
-}
-function createToken(person: jsonObject): string {
-  const token = jwt.sign(
-    { name: person.name, lastname: person.lastname },
-    privateKey,
-    {
-      expiresIn: "1hour",
-    }
-  );
+
+// interface jsonObject {
+//   name: string;
+//   lastname: string;
+// }
+function createToken(name: string, lastname: string): string {
+  const token = jwt.sign({ name: name, lastname: lastname }, privateKey, {
+    expiresIn: "1hour",
+  });
   return token;
 }
 
