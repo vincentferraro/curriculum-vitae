@@ -4,10 +4,6 @@ dotenv.config();
 
 const privateKey: string = process.env.PRIVATE_KEY_TOKEN as string;
 
-// interface jsonObject {
-//   name: string;
-//   lastname: string;
-// }
 function createToken(name: string, lastname: string): string {
   const token = jwt.sign({ name: name, lastname: lastname }, privateKey, {
     expiresIn: "1hour",
